@@ -1,25 +1,30 @@
+"use strict"
 function solveEquation(a, b, c) {
-  "use strict"
+  let result;
   let d;
-  d=Math.pow(b, 2)-4*a*c;
+  d = (b**2-4*a*c);
 
   if (d < 0) {
-    result = 0;
-  } else if(d = 0){
-    result = (-b/(2*a));
+    result = [];
+  } else if(d === 0) {
+    result = [(-b/(2*a))];
   } else if (d > 0) {
     let firstRoot = (Math.round((-b + Math.sqrt(d) )/(2*a), 2));
     let secondRoot = (Math.round((-b - Math.sqrt(d) )/(2*a), 2));
     result = [firstRoot, secondRoot];
   }
-
-  console.log (result)
+  return result;
 }
 
 function calculateTotalMortgage(percent, contribution, amount, date) {
   let totalAmount;
+  let sumDebt = amount - contribution;
+  let P = (Number(percent)/1200);
+  let date1= new Date ();
+  let date2 = new Date (date);
+  let n = Math.floor(Math.abs(date2.getTime() - date1.getTime())/(1000*3600*24*30));
 
-  // код для задачи №2 писать здесь
-
+  totalAmount = Number(((sumDebt * (P / ((1 - ( 1+ P)**-n))))*n).toFixed(2));
+  
   return totalAmount;
 }
