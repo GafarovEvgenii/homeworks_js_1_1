@@ -19,6 +19,17 @@ function solveEquation(a, b, c) {
 function calculateTotalMortgage(percent, contribution, amount, date) {
   let totalAmount;
   let sumDebt = amount - contribution;
+
+  if (isNaN(percent)) {
+    return `Параметр "Процентная ставка" содержит неправильное значение "${percent}"`;
+  }
+  if (isNaN(contribution)) {
+    return `Параметр "Начальный взнос" содержит неправильное значение "${contribution}"`;
+  }
+  if (isNaN(amount)){
+    return `Параметр "Общая стоимость" содержит неправильное значение "${amount}"`;
+  }
+  
   let P = (Number(percent)/1200);
   let date1= new Date ();
   let date2 = new Date (date);
